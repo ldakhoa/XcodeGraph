@@ -12,9 +12,9 @@ struct ProjectNativeTarget {
 
 struct DependencyManager: Hashable, Identifiable {
     let name: String
-    let type: DependencyManagerType
+    let type: DependencyModuleType
 
-    init(name: String, type: DependencyManagerType) {
+    init(name: String, type: DependencyModuleType) {
         self.name = name
         self.type = type
     }
@@ -22,18 +22,10 @@ struct DependencyManager: Hashable, Identifiable {
     var id: String {
         name
     }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-
-    public static func == (lhs: DependencyManager, rhs: DependencyManager) -> Bool {
-        return lhs.id == rhs.id
-    }
 }
 
 extension DependencyManager {
-    enum DependencyManagerType {
+    enum DependencyModuleType {
         /// Apple platform SDK.
         ///
         /// For instances: Foundation, AVFoundation, UIKit...
