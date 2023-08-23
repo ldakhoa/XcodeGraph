@@ -10,9 +10,26 @@ struct ProjectNativeTarget {
     let dependencies: [DependencyManager]
 }
 
-struct DependencyManager: Hashable {
+struct DependencyManager: Hashable, Identifiable {
     let name: String
     let type: DependencyManagerType
+
+    init(name: String, type: DependencyManagerType) {
+        self.name = name
+        self.type = type
+    }
+    
+    var id: String {
+        name
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    public static func == (lhs: DependencyManager, rhs: DependencyManager) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 extension DependencyManager {

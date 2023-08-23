@@ -16,10 +16,16 @@ struct XcodeGraph: ParsableCommand {
     @Option(help: "Xcode Project path.")
     var project: String
 
+    @Option(help: "Target. Default will list all available targets")
+    var targets: [String] = []
+
     mutating func run() throws {
         LoggingSystem.bootstrap()
 
-        let runner = Runner(projectPath: project)
+        let runner = Runner(
+            projectPath: project,
+            targets: targets
+        )
         runner.run()
     }
 }
