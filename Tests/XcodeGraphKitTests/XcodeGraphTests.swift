@@ -1,5 +1,5 @@
 import XCTest
-@testable import XcodeGraph
+@testable import XcodeGraphKit
 
 final class XcodeGraphTests: XCTestCase {
     func testExample() throws {

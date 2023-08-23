@@ -26,6 +26,9 @@ let package = Package(
         .package(
             url: "https://github.com/onevcat/Rainbow",
             .upToNextMinor(from: "4.0.1")),
+        .package(
+            url: "https://github.com/tuist/XcodeProj.git",
+            .upToNextMajor(from: "8.12.0"))
     ],
     targets: [
         .executableTarget(
@@ -39,6 +42,7 @@ let package = Package(
             dependencies: [
                 .product(name: "Logging", package: "swift-log"),
                 .product(name: "Rainbow", package: "Rainbow"),
+                "XcodeProj"
             ]
         ),
         .testTarget(
